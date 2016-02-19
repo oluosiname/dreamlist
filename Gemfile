@@ -8,6 +8,7 @@ gem 'spring', :group => :development
 gem "faker"
 
 gem "jwt"
+gem "pry"
 
 gem "byebug"
 gem 'sqlite3'
