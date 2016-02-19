@@ -1,17 +1,24 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.2.5'
 
 gem 'rails-api'
-
+gem "active_model_serializers"
 gem 'spring', :group => :development
+gem "faker"
 
+gem "jwt"
 
+gem "byebug"
 gem 'sqlite3'
+gem "bcrypt"
+gem "codeclimate-test-reporter", group: :test
 
-
-
+group :development, :test do
+  gem "rubocop", require: false
+  gem "simplecov"
+  gem "minitest"
+end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
