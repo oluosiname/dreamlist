@@ -65,6 +65,12 @@ class Api::V1::BucketlistsControllerTest < ActionController::TestCase
     bucketlists = JSON.parse(response.body)
     assert_equal 2, bucketlists.count
     assert_response 200
+
+    get :index, q: "Main bucketlist"
+    bucketlists = JSON.parse(response.body)
+    assert_equal 1, bucketlists.count
+    assert_equal "Main bucketlist", bucketlists[0]["name"]
+    assert_response 200
   end
 
   test "gets existing single bucketlist for a logged in user" do
@@ -101,5 +107,29 @@ class Api::V1::BucketlistsControllerTest < ActionController::TestCase
     msg = JSON.parse(response.body)
     assert_equal "No such Bucketlist found", msg["error"]
     assert_response 404
+  end
+
+  test "update a bucketlist" do
+    create_user
+    login
+    post :create, name: "Main bucketlist"
+    bucketlist = JSON.parse(response.body)
+    post :update, id:bucketlist["id"], name: "another one"
+
+    bucketlist = JSON.parse(response.body)
+    assert_equal "another one", bucketlist["name"]
+    assert_response 201
+
+    post :update, id: 0, name: "ss"
+
+    msg = JSON.parse(response.body)
+    assert_equal "No such Bucketlist found", msg["error"]
+    assert_response 404
+
+    post :update, id:bucketlist["id"], name: ""
+
+    msg = JSON.parse(response.body)
+    assert_equal ["can't be blank"], msg["name"]
+    assert_response 400
   end
 end
