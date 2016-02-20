@@ -48,4 +48,21 @@ class Api::V1::BucketlistsControllerTest < ActionController::TestCase
     assert_equal 0, @user.bucketlists.count
     @user.destroy
   end
+
+
+  test "gets bucketlists for a logged in user" do
+    create_user
+    login
+    @request.headers["Accept"] = "application/json"
+    @request.headers["Authorization"] = "Token #{@token}"
+    post :create, name: "Main bucketlist"
+    post :create, name: "Main bucketlist2"
+    get :index
+
+
+    bucketlists = JSON.parse(response.body)
+    assert_equal 2, bucketlists.count
+    assert_response 200
+  end
+
 end
