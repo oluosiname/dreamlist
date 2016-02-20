@@ -83,9 +83,23 @@ class Api::V1::BucketlistsControllerTest < ActionController::TestCase
     msg = JSON.parse(response.body)
     assert_equal "No such Bucketlist found", msg["error"]
     assert_response 404
-
-
   end
 
+  test "deletes a bucketlist" do
+    create_user
+    login
+    post :create, name: "Main bucketlist"
+    bucketlist = JSON.parse(response.body)
+    post :destroy, id:bucketlist["id"]
 
+    msg = JSON.parse(response.body)
+    assert_equal "Bucketlist deleted", msg["notice"]
+    assert_response 200
+
+    post :destroy, id: 0
+
+    msg = JSON.parse(response.body)
+    assert_equal "No such Bucketlist found", msg["error"]
+    assert_response 404
+  end
 end
