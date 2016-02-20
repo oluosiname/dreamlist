@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
     message: "invalid. Please use a different email"
   }
 
-  # def generate_auth_token
-  #   payload = { user_id: self.id }
-  #   AuthToken.encode(payload)
-  # end
+  def generate_auth_token
+    payload = { user_id: self.id }
+    AuthToken.encode(payload)
+  end
 end
