@@ -11,14 +11,14 @@ Item.destroy_all
 end
 
 users = User.all
-20.times do |n|
+100.times do |n|
   Bucketlist.create(
     name: "Bucketlist #{n}",
     user_id: users.sample.id
   )
 end
 
-100.times do
+200.times do
   Item.create(
     name: Faker::Company.bs,
     bucketlist_id: Bucketlist.all.sample.id,

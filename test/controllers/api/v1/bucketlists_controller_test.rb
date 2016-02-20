@@ -54,7 +54,6 @@ class Api::V1::BucketlistsControllerTest < ActionController::TestCase
     @user.destroy
   end
 
-
   test "gets bucketlists for a logged in user" do
     create_user
     login
@@ -68,7 +67,7 @@ class Api::V1::BucketlistsControllerTest < ActionController::TestCase
 
     get :index, q: "Main bucketlist"
     bucketlists = JSON.parse(response.body)
-    assert_equal 1, bucketlists.count
+    assert_equal 2, bucketlists.count
     assert_equal "Main bucketlist", bucketlists[0]["name"]
     assert_response 200
   end
@@ -78,7 +77,7 @@ class Api::V1::BucketlistsControllerTest < ActionController::TestCase
     login
     post :create, name: "Main bucketlist"
     bucketlist = JSON.parse(response.body)
-    get :show, id:bucketlist["id"]
+    get :show, id: bucketlist["id"]
 
     bucketlist = JSON.parse(response.body)
     assert_equal "Main bucketlist", bucketlist["name"]
@@ -96,7 +95,7 @@ class Api::V1::BucketlistsControllerTest < ActionController::TestCase
     login
     post :create, name: "Main bucketlist"
     bucketlist = JSON.parse(response.body)
-    post :destroy, id:bucketlist["id"]
+    post :destroy, id: bucketlist["id"]
 
     msg = JSON.parse(response.body)
     assert_equal "Bucketlist deleted", msg["notice"]
@@ -114,7 +113,7 @@ class Api::V1::BucketlistsControllerTest < ActionController::TestCase
     login
     post :create, name: "Main bucketlist"
     bucketlist = JSON.parse(response.body)
-    post :update, id:bucketlist["id"], name: "another one"
+    post :update, id: bucketlist["id"], name: "another one"
 
     bucketlist = JSON.parse(response.body)
     assert_equal "another one", bucketlist["name"]
@@ -126,7 +125,7 @@ class Api::V1::BucketlistsControllerTest < ActionController::TestCase
     assert_equal "No such Bucketlist found", msg["error"]
     assert_response 404
 
-    post :update, id:bucketlist["id"], name: ""
+    post :update, id: bucketlist["id"], name: ""
 
     msg = JSON.parse(response.body)
     assert_equal ["can't be blank"], msg["name"]
