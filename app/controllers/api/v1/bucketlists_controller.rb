@@ -8,6 +8,7 @@ class Api::V1::BucketlistsController < ApplicationController
   def create
     bucketlist = Bucketlist.new(bucket_params)
     bucketlist.user_id = current_user.id
+
     if bucketlist.save
       render json: bucketlist
     else
@@ -31,6 +32,17 @@ class Api::V1::BucketlistsController < ApplicationController
     else
       render json: { error: "No such Bucketlist found" }, status: 404
     end
+  end
+
+  def update
+    bucketlist = user_bucket(params[:id])
+    if bucketlist.update(bucket_params)
+      render json: bucketlist, status: 201
+    else
+      render json: bucketlist.errors.full_messages, status: 400
+    end
+  rescue
+    render json: { error: "No such Bucketlist found" }, status: 404
   end
 
   def bucket_params
