@@ -1,7 +1,6 @@
-require 'test_helper'
+require "test_helper"
 
 class Api::V1::SessionsControllerTest < ActionController::TestCase
-
   def login
     @user = User.new(
       name: "Olamide",
@@ -38,11 +37,10 @@ class Api::V1::SessionsControllerTest < ActionController::TestCase
   test "logs out a logged in user" do
     login
     msg = JSON.parse(response.body)
-    @user.token = msg["token"]
-    @user.save!
+    token = msg["token"]
 
     @request.headers["Accept"] = "application/json"
-    @request.headers["Authorization"] = "Token #{@user.token}"
+    @request.headers["Authorization"] = "Token #{token}"
     get :destroy
 
     assert_response :success

@@ -1,17 +1,17 @@
-source 'https://rubygems.org'
+source "https://rubygems.org"
 
-gem 'rails', '4.2.5'
+gem "rails", "4.2.5"
 
-gem 'rails-api'
+gem "rails-api"
 gem "active_model_serializers"
-gem 'spring', :group => :development
+gem "spring", group: :development
 gem "faker"
 
 gem "jwt"
 gem "pry"
 
 gem "byebug"
-gem 'sqlite3'
+gem "sqlite3"
 gem "bcrypt"
 gem "codeclimate-test-reporter", group: :test
 
