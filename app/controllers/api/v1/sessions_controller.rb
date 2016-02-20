@@ -6,6 +6,7 @@ class Api::V1::SessionsController < ApplicationController
     user = User.find_by_email(session_params[:email])
     if user && user.authenticate(session_params[:password])
       token = user.generate_auth_token
+      user.update_attributes token: token
       render json: { notice: "Login successful", token: token }, status: 201
     else
       render json: { error: "Incorrect username/password" }, status: 401
@@ -13,7 +14,7 @@ class Api::V1::SessionsController < ApplicationController
   end
 
   def destroy
-    # Token.find_by_value(get_token).destroy
+    current_user.update_attributes token: nil
     render json: { notice: "You are now logged out" }, status: 200
   end
 

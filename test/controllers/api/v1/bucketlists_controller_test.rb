@@ -16,8 +16,8 @@ class Api::V1::BucketlistsControllerTest < ActionController::TestCase
     login_params = { email: "sname@examples.com", password: "sname" }
     post :create, login_params
     assert_response :success
-    the_response = JSON.parse(response.body)
-    @token = the_response["token"]
+    msg = JSON.parse(response.body)
+    @token = msg["token"]
     @controller = Api::V1::BucketlistsController.new
   end
 
