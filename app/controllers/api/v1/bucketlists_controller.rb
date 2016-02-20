@@ -24,6 +24,15 @@ class Api::V1::BucketlistsController < ApplicationController
     end
   end
 
+  def destroy
+    if user_bucket(params[:id])
+      user_bucket(params[:id]).destroy
+      render json: { notice: "Bucketlist deleted" }, status: 200
+    else
+      render json: { error: "No such Bucketlist found" }, status: 404
+    end
+  end
+
   def bucket_params
     params.permit(:name)
   end
