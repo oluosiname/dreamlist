@@ -11,9 +11,10 @@ Item.destroy_all
 end
 
 users = User.all
-100.times do |n|
+
+400.times do |n|
   Bucketlist.create(
-    name: "Bucketlist #{n}",
+    name: "Bucketlist#{n}",
     user_id: users.sample.id
   )
 end
