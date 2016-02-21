@@ -4,12 +4,21 @@ class Bucketlist < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: true
 
-  scope :search, ->(q) { where(user_id: user_id) }
-
   scope(
     :search,
     lambda do |q|
-      where("name = ?", q)
+      if q
+        where("name like ?", "%#{q}%")
+      else
+        all
+      end
+    end
+  )
+
+  scope(
+    :by_page,
+    lambda do |page, lim,offset|
+      offset(offset).limit(lim.to_i)
     end
   )
 end

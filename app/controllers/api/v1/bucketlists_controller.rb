@@ -1,11 +1,13 @@
 class Api::V1::BucketlistsController < ApplicationController
   include BucketlistHelper
   def index
-    if params[:q]
-      bucketlists = user_buckets.search(params[:q])
-    else
-      bucketlists = user_buckets
-    end
+    bucketlists = user_buckets.search(
+      params[:q]
+    ).by_page(
+      set_page(params[:page]),
+      set_limit(params[:limit]),
+      set_offset
+    )
     render json: bucketlists, status: 200
   end
 
@@ -46,6 +48,7 @@ class Api::V1::BucketlistsController < ApplicationController
     else
       render json: bucketlist.errors, status: 400
     end
+
   rescue
     render json: { error: "No such Bucketlist found" }, status: 404
   end
