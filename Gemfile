@@ -9,7 +9,8 @@ gem "faker"
 
 gem "jwt"
 gem "pry"
-
+gem "humanize_boolean"
+gem "rspec-rails"
 gem "byebug"
 gem "sqlite3"
 gem "bcrypt"
@@ -17,8 +18,9 @@ gem "codeclimate-test-reporter", group: :test
 
 group :development, :test do
   gem "rubocop", require: false
+  gem "factory_girl_rails"
+  gem "shoulda-matchers", "~> 3.0"
   gem "simplecov"
-  gem "minitest"
 end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

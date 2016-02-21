@@ -16,7 +16,7 @@ class Api::V1::BucketlistsController < ApplicationController
     bucketlist.user_id = current_user.id
 
     if bucketlist.save
-      render json: bucketlist
+      render json: bucketlist, status: 200
     else
       render json: bucketlist.errors, status: 422
     end

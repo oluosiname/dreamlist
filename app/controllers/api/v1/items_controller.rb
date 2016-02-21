@@ -6,7 +6,7 @@ class Api::V1::ItemsController < ApplicationController
     if user_bucket(params[:bucketlist_id])
       save_item(item_params, params[:bucketlist_id])
     else
-      render json: { message: "Bucketlist does not exist" }
+      render json: { error: "Bucketlist does not exist" }
     end
   end
 
@@ -14,7 +14,7 @@ class Api::V1::ItemsController < ApplicationController
     if user_bucket(params[:bucketlist_id])
       update_item(item_params, params[:bucketlist_id], params[:id])
     else
-      render json: { message: " Bucketlistdoes not exist" }
+      render json: { message: " Bucketlist does not exist" }
     end
   end
 
