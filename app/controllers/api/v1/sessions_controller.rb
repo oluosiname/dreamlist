@@ -3,6 +3,7 @@ class Api::V1::SessionsController < ApplicationController
 
   def create
     user = User.find_by_email(session_params[:email])
+
     if user && user.authenticate(session_params[:password])
       token = user.generate_auth_token
       user.update_attributes token: token
