@@ -12,27 +12,19 @@ gem "pry"
 gem "humanize_boolean"
 gem "rspec-rails"
 gem "byebug"
-gem "sqlite3"
 gem "bcrypt"
 gem "codeclimate-test-reporter", group: :test
+gem "apipie-rails"
 
 group :development, :test do
   gem "rubocop", require: false
+  gem "sqlite3"
   gem "factory_girl_rails"
   gem "shoulda-matchers", "~> 3.0"
   gem "simplecov"
 end
-# To use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano', :group => :development
-
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
+group :production do
+  gem "puma"
+  gem "pg"
+end

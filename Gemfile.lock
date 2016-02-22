@@ -38,6 +38,8 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
+    apipie-rails (0.3.6)
+      json
     arel (6.0.3)
     ast (2.2.0)
     bcrypt (3.1.10)
@@ -76,11 +78,13 @@ GEM
       mini_portile2 (~> 2.0.0.rc2)
     parser (2.3.0.1)
       ast (~> 2.2)
+    pg (0.18.4)
     powerpack (0.1.1)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
+    puma (2.16.0)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -163,6 +167,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  apipie-rails
   bcrypt
   byebug
   codeclimate-test-reporter
@@ -170,7 +175,9 @@ DEPENDENCIES
   faker
   humanize_boolean
   jwt
+  pg
   pry
+  puma
   rails (= 4.2.5)
   rails-api
   rspec-rails
