@@ -4,7 +4,6 @@ RSpec.describe Api::V1::BucketlistsController, type: :controller do
   include TestHelper
   before(:each) do
     User.destroy_all
-    #Bucketlist.destroy_all
     @user = create(:user)
     @bucketlist = create(:bucketlist)
   end
