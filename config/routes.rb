@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+
+  root to: "root#index"
   namespace :api do
     namespace :v1 do
       resources :bucketlists, except: [:new, :edit] do
