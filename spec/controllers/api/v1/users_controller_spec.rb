@@ -14,10 +14,10 @@ context "Create User" do
       }
 
       post :create, user_params
-      user = JSON.parse(response.body)
+      msg = JSON.parse(response.body)
 
       expect(response.status).to eq(201)
-      expect(user["name"]).to eq "Olamide"
+      expect(msg["user"]["name"]).to eq "Olamide"
     end
 
      it "does not save a user without a missing param" do
