@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Api::V1::SessionsController, type: :controller do
   before(:all) do
@@ -62,6 +62,7 @@ RSpec.describe Api::V1::SessionsController, type: :controller do
       msg = JSON.parse(response.body)
 
       expect(response.status).to eq(401)
+      expect(msg["error"]).to eq "Unauthorized access"
     end
   end
 end

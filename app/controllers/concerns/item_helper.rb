@@ -16,7 +16,7 @@ module ItemHelper
       item.update(item_params)
       render json: item, status: 200
     else
-      render json: {error: "Item does not exist in this bucketlist" }
+      render json: { error: "Item does not exist in this bucketlist" }
     end
   end
 
@@ -24,9 +24,9 @@ module ItemHelper
     item = Item.find_by_id(id)
     if item && belong_to_bucket?(bucketlist_id, item)
       item.destroy
-      render json: {notice: "Item deleted" }, status: 200
+      render json: { notice: "Item deleted" }, status: 200
     else
-      render json: {error: "Item does not exist in this bucketlist" }
+      render json: { error: "Item does not exist in this bucketlist" }
     end
   end
 

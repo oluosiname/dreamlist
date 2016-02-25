@@ -1,5 +1,3 @@
-== README
-
 [![Code Climate](https://codeclimate.com/github/andela-oosiname/dreamlist/badges/gpa.svg)](https://codeclimate.com/github/andela-oosiname/dreamlist) [![Test Coverage](https://codeclimate.com/github/andela-oosiname/dreamlist/badges/coverage.svg)](https://codeclimate.com/github/andela-oosiname/dreamlist/coverage) [![Build Status](https://travis-ci.org/andela-oosiname/dreamlist.svg?branch=master)](https://travis-ci.org/andela-oosiname/dreamlist)
 
 ## Introduction
