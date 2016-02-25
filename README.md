@@ -76,7 +76,7 @@ OAuth not yet implemented.
 
 ## API Documentation
 
-The full documentation for the API and all available endpoints is explained [here](http://andela-oosiname.github.io/slate)
+The full documentation for the API and all available endpoints is explained [here](http://dreamlist.herokuapp.com)
 
 ## Contributing
 
