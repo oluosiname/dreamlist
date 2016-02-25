@@ -24,7 +24,6 @@ RSpec.describe Api::V1::BucketlistsController, type: :controller do
       login
 
       post :create
-      bucketlist = JSON.parse(response.body)
 
       expect(@user.bucketlists.count).to eq(0)
       expect(response.status).to eq(422)

@@ -8,7 +8,7 @@ class Bucketlist < ActiveRecord::Base
     :search,
     lambda do |q|
       if q
-        where("name like ?", "%#{q}%")
+        where("lower(name) like ?", "%#{q.downcase}%")
       else
         all
       end
@@ -17,8 +17,8 @@ class Bucketlist < ActiveRecord::Base
 
   scope(
     :by_page,
-    lambda do |page, lim,offset|
-      offset(offset).limit(lim.to_i)
+    lambda do |lim, offset|
+      offset(offset).limit(lim)
     end
   )
 end

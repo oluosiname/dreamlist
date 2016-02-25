@@ -12,7 +12,6 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
       create_bucketlist
 
       post :create, bucketlist_id: @bucketlist.id, name: "testitem1"
-      msg = JSON.parse(response.body)
 
       expect(@bucketlist.items.count).to eq(1)
       expect(response.status).to eq(200)
@@ -50,12 +49,10 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
       msg = JSON.parse(response.body)
       item = Item.find(msg["item"]["id"])
 
-      post :update, {
-        bucketlist_id: @bucketlist.id,
-        name: "changed",
-        id: item.id,
-        done: true
-      }
+      post :update,         bucketlist_id: @bucketlist.id,
+                            name: "changed",
+                            id: item.id,
+                            done: true
       msg = JSON.parse(response.body)
       item = Item.find(msg["item"]["id"])
 
@@ -72,12 +69,10 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
       msg = JSON.parse(response.body)
       item = Item.find(msg["item"]["id"])
 
-      post :update, {
-        bucketlist_id: @second_bucketlist.id,
-        name: "changedname",
-        id: item.id,
-        done: true
-      }
+      post :update,         bucketlist_id: @second_bucketlist.id,
+                            name: "changedname",
+                            id: item.id,
+                            done: true
       msg = JSON.parse(response.body)
 
       expect(msg["error"]).to eq "Item does not exist in this bucketlist"
@@ -91,12 +86,10 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
       msg = JSON.parse(response.body)
       item = Item.find(msg["item"]["id"])
 
-      post :update, {
-        bucketlist_id: 0,
-        name: "changed",
-        id: item.id,
-        done: true
-      }
+      post :update,         bucketlist_id: 0,
+                            name: "changed",
+                            id: item.id,
+                            done: true
       msg = JSON.parse(response.body)
 
       expect(msg["error"]).to eq("Bucketlist does not exist")
@@ -113,10 +106,8 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
       msg = JSON.parse(response.body)
       item = Item.find(msg["item"]["id"])
 
-      post :destroy, {
-        bucketlist_id: @bucketlist.id,
-        id: item.id,
-      }
+      post :destroy,         bucketlist_id: @bucketlist.id,
+                             id: item.id
       msg = JSON.parse(response.body)
 
       expect(msg["notice"]).to eq("Item deleted")
@@ -131,10 +122,8 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
       msg = JSON.parse(response.body)
       item = Item.find(msg["item"]["id"])
 
-      post :destroy, {
-        bucketlist_id: @second_bucketlist.id,
-        id: item.id
-      }
+      post :destroy,         bucketlist_id: @second_bucketlist.id,
+                             id: item.id
       msg = JSON.parse(response.body)
 
       expect(msg["error"]).to eq "Item does not exist in this bucketlist"
@@ -148,15 +137,12 @@ RSpec.describe Api::V1::ItemsController, type: :controller do
       msg = JSON.parse(response.body)
       item = Item.find(msg["item"]["id"])
 
-      post :destroy, {
-        bucketlist_id: 0,
-        id: item.id,
-      }
+      post :destroy,         bucketlist_id: 0,
+                             id: item.id
       msg = JSON.parse(response.body)
 
       expect(msg["error"]).to eq("Bucketlist does not exist")
       expect(response.status).to eq(404)
     end
   end
-
 end

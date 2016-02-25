@@ -1,11 +1,11 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Api::V1::UsersController, type: :controller do
-before(:all) do
+  before(:all) do
     User.destroy_all
-end
+  end
 
-context "Create User" do
+  context "Create User" do
     it "saves a user with valid params" do
       user_params = {
         name: "Olamide",
@@ -20,7 +20,7 @@ context "Create User" do
       expect(msg["user"]["name"]).to eq "Olamide"
     end
 
-     it "does not save a user without a missing param" do
+    it "does not save a user without a missing param" do
       user_params = {
         email: "sname@example.com",
         password: "sname"

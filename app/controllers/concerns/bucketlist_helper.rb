@@ -14,13 +14,8 @@ module BucketlistHelper
     @limit.to_i
   end
 
-  def set_page(page)
+  def set_offset(page)
     page ||= 1
-    @page = page
-    @page.to_i
-  end
-
-  def set_offset
-    offset = @limit.to_i * (@page.to_i - 1)
+    @limit.to_i * (page.to_i - 1)
   end
 end

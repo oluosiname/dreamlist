@@ -2,10 +2,13 @@ AllCops:
   Exclude:
     - "vendor/**/*"
     - "db/schema.rb"
+    - "config/initializers/secret_token.rb"
+    - "bin/spring"
+    - "Rakefile"
   UseCache: false
 Style/CollectionMethods:
   Description: Preferred collection methods.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#map-find-select-reduce-size
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide
   Enabled: true
   PreferredMethods:
     collect: map
@@ -15,7 +18,7 @@ Style/CollectionMethods:
     reduce: inject
 Style/DotPosition:
   Description: Checks the position of the dot in multi-line method calls.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#consistent-multi-line-chains
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide
   Enabled: true
   EnforcedStyle: trailing
   SupportedStyles:
@@ -28,7 +31,7 @@ Style/FileName:
   Exclude: []
 Style/GuardClause:
   Description: Check for conditionals that can be replaced with guard clauses
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-nested-conditionals
+  StyleGuide: https://github.com/bbatsov/ruby-style-guide
   Enabled: false
   MinBodyLength: 1
 Style/IfUnlessModifier:
