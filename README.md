@@ -1,4 +1,4 @@
-[![Code Climate](https://codeclimate.com/github/andela-oosiname/dreamlist/badges/gpa.svg)](https://codeclimate.com/github/andela-oosiname/dreamlist) [![Test Coverage](https://codeclimate.com/github/andela-oosiname/dreamlist/badges/coverage.svg)](https://codeclimate.com/github/andela-oosiname/dreamlist/coverage) [![Build Status](https://travis-ci.org/andela-oosiname/dreamlist.svg?branch=master)](http://travis-ci.org/andela-oosiname/dreamlist)
+[![Code Climate](https://codeclimate.com/github/andela-oosiname/dreamlist/badges/gpa.svg)](https://codeclimate.com/github/andela-oosiname/dreamlist) [![Test Coverage](https://codeclimate.com/github/andela-oosiname/dreamlist/badges/coverage.svg)](https://codeclimate.com/github/andela-oosiname/dreamlist/coverage) [![Build Status](https://travis-ci.org/andela-oosiname/dreamlist.svg?branch=master)](https://travis-ci.org/andela-oosiname/dreamlist)
 
 ## Introduction
 Dreamlist is a simple API for bucketlist. It provides an application interface that enables users to create and manage their bucketlists. A user can have many bucketlist. Each bucketlist can have many items. Bucketlists are initialized with a name. Items are stored under bucketlists, with a name and a `done` status indicating whether Item is completed or not.
@@ -76,7 +76,7 @@ OAuth not yet implemented.
 
 ## API Documentation
 
-The full documentation for the API and all available endpoints is explained [here](https://andela-oosiname.github.io/slate)
+The full documentation for the API and all available endpoints is explained [here](http://andela-oosiname.github.io/slate)
 
 ## Contributing
 
