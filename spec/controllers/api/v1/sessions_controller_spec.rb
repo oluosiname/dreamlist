@@ -18,7 +18,7 @@ RSpec.describe Api::V1::SessionsController, type: :controller do
 
       post :create, user_params
       msg = JSON.parse(response.body)
-      current_user = User.find_by_id(@user.id)
+      current_user = User.find_by(id: @user.id)
 
       expect(response.status).to eq(201)
       expect(current_user.token.nil?).to be false

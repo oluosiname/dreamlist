@@ -9,6 +9,7 @@ module Api
           set_limit(params[:limit]),
           set_offset(params[:page])
         )
+
         render json: bucketlists, status: 200
       end
 
@@ -24,7 +25,7 @@ module Api
       end
 
       def show
-        if user_bucket(params[:id])
+        if user_bucket params[:id]
           bucketlist = user_bucket(params[:id])
           render json: bucketlist
         else
@@ -33,7 +34,7 @@ module Api
       end
 
       def destroy
-        if user_bucket(params[:id])
+        if user_bucket params[:id]
           user_bucket(params[:id]).destroy
           render json: { notice: "Bucketlist deleted" }, status: 200
         else
@@ -44,7 +45,7 @@ module Api
       def update
         bucketlist = user_bucket(params[:id])
 
-        if bucketlist.update(bucket_params)
+        if bucketlist.update bucket_params
           render json: bucketlist, status: 201
         else
           render json: bucketlist.errors, status: 400

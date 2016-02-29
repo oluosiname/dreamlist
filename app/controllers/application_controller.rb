@@ -13,7 +13,7 @@ class ApplicationController < ActionController::API
   end
 
   def decoded_auth_token
-    AuthToken.decode(get_token)
+    AuthToken.decode get_token
   end
 
   def get_token
@@ -23,6 +23,6 @@ class ApplicationController < ActionController::API
   end
 
   def user_token?
-    User.find_by_token(get_token)
+    User.find_by(token: get_token)
   end
 end

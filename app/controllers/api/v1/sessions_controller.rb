@@ -4,7 +4,7 @@ module Api
       skip_before_action :authenticate_user, only: :create
 
       def create
-        user = User.find_by_email(session_params[:email])
+        user = User.find_by(email: session_params[:email])
 
         if user && user.authenticate(session_params[:password])
           token = user.generate_auth_token
