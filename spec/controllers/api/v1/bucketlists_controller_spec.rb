@@ -30,21 +30,6 @@ RSpec.describe Api::V1::BucketlistsController, type: :controller do
     end
   end
 
-  context "gets bucketlist for a user" do
-    it "creates a bucketlist with valid name" do
-      @bucketlist.user_id = @user.id
-      @bucketlist.save
-      login
-
-      get :index
-      msg = JSON.parse(response.body)
-
-      expect(@user.bucketlists.count).to eq(1)
-      expect(msg["bucketlists"][0]["name"]).to eq(@bucketlist.name)
-      expect(response.status).to eq(200)
-    end
-  end
-
   context "get bucketlists for a user" do
     it "gets all bucketlists for a user" do
       @bucketlist.user_id = @user.id

@@ -17,8 +17,8 @@ class Bucketlist < ActiveRecord::Base
 
   scope(
     :by_page,
-    lambda do |lim, offset|
-      offset(offset).limit(lim)
+    lambda do |limit, offset|
+      offset(offset).limit(limit)
     end
   )
 end
