@@ -3,6 +3,7 @@ class Bucketlist < ActiveRecord::Base
   has_many :items
 
   validates :name, presence: true, uniqueness: true
+  before_create :format_params
 
   scope(
     :search,
@@ -21,4 +22,10 @@ class Bucketlist < ActiveRecord::Base
       offset(offset).limit(limit)
     end
   )
+
+  private
+
+  def format_params
+    name.downcase!
+  end
 end
