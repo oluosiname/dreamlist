@@ -6,7 +6,7 @@ class ApplicationController < ActionController::API
 
   def authenticate_user
     if decoded_auth_token && user_token?
-      @current_user = User.find(decoded_auth_token["user_id"])
+      @current_user = User.find_by(id: decoded_auth_token["user_id"])
     else
       render json: { error: "Unauthorized access" }, status: 401
     end

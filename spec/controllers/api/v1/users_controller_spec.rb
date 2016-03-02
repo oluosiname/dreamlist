@@ -17,7 +17,7 @@ RSpec.describe Api::V1::UsersController, type: :controller do
       msg = JSON.parse(response.body)
 
       expect(response.status).to eq(201)
-      expect(msg["user"]["name"]).to eq "Olamide"
+      expect(msg["user"]["name"]).to eq "olamide"
     end
 
     it "does not save a user without a missing param" do

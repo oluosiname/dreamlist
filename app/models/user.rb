@@ -8,8 +8,17 @@ class User < ActiveRecord::Base
     message: "invalid. Please use a different email"
   }
 
+  before_create :format_params
+
   def generate_auth_token
     payload = { user_id: id }
     AuthToken.encode(payload)
+  end
+
+  private
+
+  def format_params
+    email.downcase!
+    name.downcase!
   end
 end
