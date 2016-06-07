@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
   include ActionController::Serialization
   
-  before_filter :set_cors
+  skip_before_filter :verify_authenticity_token
   before_action :authenticate_user, except: [:root]
 
   attr_reader :current_user
@@ -27,14 +27,6 @@ class ApplicationController < ActionController::API
   def user_token?
     User.find_by(token: get_token)
   end
-  
-  def set_cors
-    response.headers['Access-Control-Allow-Origin'] = request.headers['Origin'] || '*'                                                                                                                                                                                                     
-    response.headers['Access-Control-Allow-Credentials'] = 'true'                                                                                                                                                                                                                          
-  end 
 
-  def options                                                                                                                                                                                                                                                                              
-    head :status => 200, :'Access-Control-Allow-Headers' => 'accept, content-type'                                                                                                                                                                                                         
-  end
 
 end
