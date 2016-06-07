@@ -15,6 +15,7 @@ gem "byebug"
 gem "bcrypt"
 gem "codeclimate-test-reporter", group: :test
 gem "apipie-rails"
+gem "rack-cors", require: "rack/cors"
 
 group :development, :test do
   gem "rubocop", require: false

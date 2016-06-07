@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::API
   include ActionController::Serialization
-  
-  skip_before_filter :verify_authenticity_token
+
   before_action :authenticate_user, except: [:root]
 
   attr_reader :current_user
@@ -27,6 +26,4 @@ class ApplicationController < ActionController::API
   def user_token?
     User.find_by(token: get_token)
   end
-
-
 end

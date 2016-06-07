@@ -9,9 +9,26 @@ Bundler.require(*Rails.groups)
 module DreamlistApi
   class Application < Rails::Application
     config.active_record.raise_in_transactional_callbacks = true
-    config.action_dispatch.default_headers.merge!({
-      'Access-Control-Allow-Origin' => '*',
-      'Access-Control-Request-Method' => '*'
-    })
+
+    config.middleware.insert_before 0, "Rack::Cors" do
+      allow do
+        origins "*"
+        resource "*",
+                 headers: :any,
+                 methods: [:get, :post, :delete, :put, :patch, :options, :head]
+      end
+    end
+
+    # Rails 5
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins "*"
+
+        resource "*",
+                 headers: :any,
+                 methods: [:get, :post, :delete, :put, :patch, :options, :head]
+      end
+    end
   end
 end
