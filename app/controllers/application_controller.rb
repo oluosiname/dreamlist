@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
   include ActionController::Serialization
   
-  after_filter :set_cors
+  before_filter :set_cors
   before_action :authenticate_user, except: [:root]
 
   attr_reader :current_user
@@ -33,6 +33,12 @@ class ApplicationController < ActionController::API
     response.headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, PATCH, DELETE, OPTIONS'
     response.headers['Access-Control-Allow-Headers'] = 'Origin, Content-Type, Accept, Authorization, Token, Auth-Token, Email'
   end
-
+  
+  def cors_preflight_check
+      request.headers['Access-Control-Allow-Origin'] = '*'
+      request.headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, PATCH, DELETE, OPTIONS'
+      request.headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version, Token, Auth-Token, Email'
+      request.headers['Access-Control-Max-Age'] = '1728000'  
+      render :text => '', :content_type => 'text/plain'
   end
 end
