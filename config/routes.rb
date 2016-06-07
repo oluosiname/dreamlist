@@ -11,5 +11,4 @@ Rails.application.routes.draw do
       get "/auth/logout" => "sessions#destroy"
     end
   end
-
 end
