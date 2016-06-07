@@ -29,16 +29,12 @@ class ApplicationController < ActionController::API
   end
   
   def set_cors
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    response.headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, PATCH, DELETE, OPTIONS'
-    response.headers['Access-Control-Allow-Headers'] = 'Origin, Content-Type, Accept, Authorization, Token, Auth-Token, Email'
+    response.headers['Access-Control-Allow-Origin'] = request.headers['Origin'] || '*'                                                                                                                                                                                                     
+    response.headers['Access-Control-Allow-Credentials'] = 'true'                                                                                                                                                                                                                          
+  end 
+
+  def options                                                                                                                                                                                                                                                                              
+    head :status => 200, :'Access-Control-Allow-Headers' => 'accept, content-type'                                                                                                                                                                                                         
   end
-  
-  def cors_preflight_check
-      request.headers['Access-Control-Allow-Origin'] = '*'
-      request.headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, PATCH, DELETE, OPTIONS'
-      request.headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version, Token, Auth-Token, Email'
-      request.headers['Access-Control-Max-Age'] = '1728000'  
-      render :text => '', :content_type => 'text/plain'
-  end
+
 end
