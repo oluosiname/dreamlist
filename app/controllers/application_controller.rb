@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::API
   include ActionController::Serialization
+  
+  after_filter :set_cors
   before_action :authenticate_user, except: [:root]
 
   attr_reader :current_user
