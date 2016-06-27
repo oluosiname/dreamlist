@@ -7,7 +7,9 @@ module Api
         @user = User.new(user_params)
 
         if @user.save
-          render json: @user, status: 201
+          token = @user.generate_auth_token
+          @user.update_attributes token: token
+          render json: { notice: "Account Created", token: token, user: @user.name }, status: 201
         else
           render json: @user.errors, status: 400
         end
