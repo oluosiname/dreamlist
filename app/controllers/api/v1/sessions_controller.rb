@@ -10,7 +10,7 @@ module Api
         if user && user.authenticate(session_params[:password])
           token = user.generate_auth_token
           user.update_attributes token: token
-          render json: { notice: "Login successful", token: token }, status: 201
+          render json: { notice: "Login successful", token: token, user: user.name }, status: 201
         else
           render json: { error: "Incorrect username/password" }, status: 401
         end
