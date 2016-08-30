@@ -16,7 +16,7 @@ module Api
       end
       
       def test
-        render json: { notice: "This is the webhook" }, status: 400
+        render json: { notice: "This is the webhook" }, status: 200
       end
 
       private
