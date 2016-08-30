@@ -16,6 +16,7 @@ module Api
       end
       
       def test
+        hh = request.body
         render json: { notice: "This is the webhook" }, status: 200
       end
 
