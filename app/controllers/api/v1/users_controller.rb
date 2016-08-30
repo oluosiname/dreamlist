@@ -16,7 +16,7 @@ module Api
       end
       
       def test
-        hh = request.body
+        hh = request
         render json: { hh }, status: 200
       end
 
