@@ -5,6 +5,7 @@ Rails.application.routes.draw do
         post "/create", to: "bucketlists#create"
         resources :items, only: [:create, :update, :destroy]
       end
+      post "test" => "users#test"
       resources :users
       post "/user/new" => "users#create"
       post "/auth/login" => "sessions#create"
