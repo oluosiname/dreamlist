@@ -14,6 +14,10 @@ module Api
           render json: @user.errors, status: 400
         end
       end
+      
+      def test
+        render json: { notice: "This is the webhook" }, status: 400
+      end
 
       private
 
